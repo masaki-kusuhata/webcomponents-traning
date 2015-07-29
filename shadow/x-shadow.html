@@ -1,0 +1,22 @@
+<template id="x-shadow-template">
+  <h3>&lt;h3&gt;タイトル (WebComponents/Shadow Root)&lt;h3&gt;</h3>
+</template>
+<script>
+  (function () {
+    'use strict';
+
+    var ownerDocument = document.currentScript.ownerDocument;
+
+    document.registerElement('x-shadow', {
+      prototype: Object.create(HTMLElement.prototype, {
+        createdCallback: {
+          value: function () {
+            var root = this.createShadowRoot();
+            var template = ownerDocument.querySelector('#x-shadow-template').content;
+            root.appendChild(document.importNode(template, true));
+          }
+        }
+      })
+    });
+  })();
+</script>

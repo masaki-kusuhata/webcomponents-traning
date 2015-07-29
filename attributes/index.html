@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>WebComponents/Attributes</title>
+    <link rel="import" href="x-attributes.html">
+    <script>
+      function update () {
+        var attribute1 = document.querySelector('#attribute1');
+
+        attribute1.setAttribute('before', document.querySelector('#before-input').value);
+        attribute1.setAttribute('after', document.querySelector('#after-input').value);
+      }
+    </script>
+  </head>
+  <body>
+    <x-attributes id="attribute1" before="{" after="}"></x-attributes>
+    <div>
+      <label>before: <input id="before-input" type="text"></label>
+      <label>after: <input id="after-input" type="text"></label>
+      <button type="button" onclick="update()">Update</button>
+    </div>
+  </body>
+</html>

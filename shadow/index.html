@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Shadow Root の実験</title>
+
+    <link rel="import" href="x-shadow.html">
+    <link rel="import" href="x-nonshadow.html">
+    <style>
+      h3 {
+        /* このコメントを外したら各 h3 の背景色がどうなるか考えてからやってみて! */
+        /* background-color: lime; */
+      }
+      ::shadow h3 {
+        /* このコメントを外したら各 h3 の背景色がどうなるか考えてからやってみて! */
+        /* background-color: lime; */
+      }
+      body /deep/ h3 {
+        /* このコメントを外したら各 h3 の背景色がどうなるか考えてからやってみて! */
+        /* background-color: lime; */
+      }
+    </style>
+    <script>
+      function display() {
+        var elements = [];
+
+        // 以下の三行のいずれかをコメントを外して、実行してどうなるかを考えよう!
+        // elements = document.querySelectorAll('h3');
+        // elements = document.querySelectorAll('::shadow h3');
+        // elements = document.querySelectorAll('h3');
+
+        for (var i = 0 ; i < elements.length; i++) {
+          console.log(elements[i].innerText);
+        }
+      }
+    </script>
+	</head>
+	<body>
+    <p>
+      index.htmlを書き換えてみて!
+      <pre>
+&lt;style&gt;
+  h3 {
+    /* このコメントを外したら各 h3 の背景色がどうなるか考えてからやってみて! */
+    /* background-color: lime; */
+  }
+&lt;style&gt;
+      </pre>
+    </p>
+    <h3>&lt;h3&gt;タイトル (今までの)&lt;h3&gt;</h3>
+    <x-shadow></x-shadow>
+    <x-nonshadow></x-nonshadow>
+    <button type="button" onclick="display()">タイトルの抽出</button>
+  </body>
+</html>

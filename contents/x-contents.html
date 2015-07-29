@@ -1,0 +1,24 @@
+<template id="x-contents-template">
+  <button type="button">
+    "ここに「コンテンツの中身」を表示してみよう"
+  </button>
+</template>
+<script>
+  (function () {
+    'use strict';
+
+    var ownerDocument = document.currentScript.ownerDocument;
+
+    document.registerElement('x-contents', {
+      prototype: Object.create(HTMLElement.prototype, {
+        createdCallback: {
+          value: function () {
+            var root = this.createShadowRoot();
+            var template = ownerDocument.querySelector('#x-contents-template').content;
+            root.appendChild(document.importNode(template, true));
+          }
+        }
+      })
+    });
+  })();
+</script>

@@ -1,0 +1,21 @@
+<template id="x-shadow-template">
+  <h3>&lt;h3&gt;タイトル (WebComponents/Without Shadow Root)&lt;h3&gt;</h3>
+</template>
+<script>
+  (function () {
+    'use strict';
+
+    var ownerDocument = document.currentScript.ownerDocument;
+
+    document.registerElement('x-nonshadow', {
+      prototype: Object.create(HTMLElement.prototype, {
+        createdCallback: {
+          value: function () {
+            var template = ownerDocument.querySelector('#x-shadow-template').content;
+            this.appendChild(document.importNode(template, true));
+          }
+        }
+      })
+    });
+  })();
+</script>
