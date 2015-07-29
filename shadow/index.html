@@ -37,9 +37,19 @@
     </script>
 	</head>
 	<body>
-    <h1>ShadowRoot の CSS 適用範囲</h1>
+    <h1>ShadowRoot のセレクター適用範囲</h1>
+
+    <h2>コンテンツ</h2>
+    以下の三つの "&lt;h3&gt;タイトル&lt;/h3&gt;" がそれぞれ、直接書いた h3 要素・Shadow Root を使った Custom Elements・Shadow Root を使わなかった Custom Elements なことを、開発者ツールを使って確認してください。
+
+    <h3>&lt;h3&gt;タイトル (今までの)&lt;h3&gt;</h3>
+    <x-shadow></x-shadow>
+    <x-nonshadow></x-nonshadow>
+    <button type="button" onclick="display()">タイトルの抽出</button>
+
+    <h2>CSS セレクターの適用範囲</h2>
     <p>
-      index.htmlを書き換えてみて!
+      index.html を書き換えて、各 "タイトル" がどうなるかやってみて!
       <pre>
 &lt;style&gt;
   h3 {
@@ -48,9 +58,19 @@
   }
 &lt;style&gt;</pre>
     </p>
-    <h3>&lt;h3&gt;タイトル (今までの)&lt;h3&gt;</h3>
-    <x-shadow></x-shadow>
-    <x-nonshadow></x-nonshadow>
-    <button type="button" onclick="display()">タイトルの抽出</button>
+
+    <h2>querySelector 関数のセレクター適用範囲</h2>
+    <p>
+      index.html を書き換えてみて、"タイトルの抽出" ボタンを押すとどのタイトルが表示されるか、考えてからやってみて!
+      <pre>
+// 以下の三行のいずれかをコメントを外して、実行してどうなるかを考えよう!
+// elements = document.querySelectorAll('h3');
+// elements = document.querySelectorAll('::shadow h3');
+// elements = document.querySelectorAll('h3');
+
+for (var i = 0 ; i < elements.length; i++) {
+  console.log(elements[i].innerText);
+}</pre>
+    </p>
   </body>
 </html>
