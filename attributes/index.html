@@ -16,6 +16,16 @@
   </head>
   <body>
     <h1>Custom Elements の属性値を使う</h1>
+    <p>
+      x-attributes.html ファイルを書き換えて、数字を囲っている括弧の種類を変更できるようにしよう!
+    </p>
+    <pre>
+attributeChangedCallback: {
+  value: function (name, oldValue, newValue) {
+    // ここになにか書いて動かしてみよう!
+    console.log(name);
+  }
+}</pre>
     <x-attributes id="attribute1" before="{" after="}"></x-attributes>
     <div>
       <label>before: <input id="before-input" type="text"></label>
